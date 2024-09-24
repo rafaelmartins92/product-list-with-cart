@@ -6,9 +6,10 @@ import { useCartContext } from '../../context/CartContext';
 
 const ProductItem = ({ product }) => {
   const { addItemToCart, isProductInCart, getCartItem, incrementQuantity, decrementQuantity } = useCartContext();
+
   return (
     <div className={styles.productItemContainer}>
-      <picture className={styles.imageContainer}>
+      <picture className={`${styles.imageContainer} ${isProductInCart(product.name) ? styles.active : ''}`}>
         <source media="(min-width: 1024px)" srcSet={product.image.desktop} />
         <source media="(min-width: 768px)" srcSet={product.image.tablet} />
         <source media="(max-width: 767px)" srcSet={product.image.mobile} />
